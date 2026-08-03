@@ -1,186 +1,241 @@
-# Legacy Estates — Real Estate Web Application
+# 🏡 Legacy Estates
 
-A full-featured real estate marketplace built with **Python (Django)** and **PostgreSQL**.
-Supports property listings (Sale & Rent) across 4 property types — House, Apartment, Plot/Land,
-and Commercial — with an Admin panel, Agent dashboards, and a public-facing site with search,
-filters, and inquiry forms.
+A modern full-stack Real Estate Web Application built with Django, designed to help buyers, sellers, and real estate agents manage property listings efficiently.
 
----
-
-## 1. What's Included
-
-- **Public site**: Homepage, property listings with search/filter/sort, property detail pages,
-  agent profiles, contact page.
-- **Agent Dashboard**: Agents log in to add, edit, and delete their own property listings
-  (with photos and features).
-- **Admin Panel** (`/admin/`): Full control — manage all properties, agents, users, inquiries,
-  and contact messages. This is where the site owner manages everything.
-- **No login required for Buyers/Sellers** — they simply browse and submit an inquiry form
-  on any property (as requested).
-- **Mobile responsive** — tested on mobile, tablet, and desktop breakpoints.
-- **Demo data already loaded** — 8 sample properties, 2 sample agents, 1 admin account —
-  so you can see the site fully populated immediately.
+![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![Django](https://img.shields.io/badge/Django-5.x-darkgreen?logo=django)
+![SQLite](https://img.shields.io/badge/SQLite-Database-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supported-blue?logo=postgresql)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
-## 2. Tech Stack
+## 🌐 Live Demo
 
-| Layer | Technology |
-|---|---|
-| Backend | Python 3.12 + Django 6.0 |
-| Database | PostgreSQL (SQLite fallback available for quick local testing) |
-| Frontend | Django Templates + custom CSS (no frontend framework — fast & simple to host) |
-| Images | Pillow (for image uploads) |
+🔗 https://legacyestates.pythonanywhere.com
+
+Admin Panel:
+
+https://legacyestates.pythonanywhere.com/admin/
 
 ---
 
-## 3. Project Structure
+# 📖 Project Overview
+
+Legacy Estates is a professional real estate marketplace built using Django. The platform allows visitors to browse properties for sale or rent, search using advanced filters, and directly contact agents without creating an account.
+
+The system also provides dedicated dashboards for agents and a complete administration panel for managing properties, users, and inquiries.
+
+---
+
+# ✨ Features
+
+- Modern responsive homepage
+- Advanced property search
+- Property categories
+- Sale & Rent listings
+- Featured properties
+- Property image gallery
+- Property inquiry form
+- Agent profiles
+- Agent Dashboard
+- Property CRUD
+- Admin Dashboard
+- Contact page
+- Mobile responsive design
+- Professional UI
+
+---
+
+# 🛠 Tech Stack
+
+## Backend
+
+- Python 3.11+
+- Django 5.x
+
+## Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+- Django Templates
+
+## Database
+
+- SQLite
+- PostgreSQL (Production Ready)
+
+## Deployment
+
+- PythonAnywhere
+
+## Other Libraries
+
+- Pillow
+- WhiteNoise
+- Gunicorn
+- dj-database-url
+
+---
+
+# 📂 Project Structure
 
 ```
-legacy_estates/
-├── accounts/          → Agent profiles, login, agent dashboard, property add/edit/delete
-├── properties/         → Property listings, search/filter, homepage
-├── inquiries/           → Contact forms & property inquiries
-├── templates/           → All HTML templates
-├── static/              → CSS, JS, images
-├── media/                → Uploaded property photos (created at runtime)
-├── legacy_estates/      → Project settings, URLs
-└── manage.py
+legacy_estates_deploy/
+│
+├── accounts/
+├── properties/
+├── inquiries/
+├── templates/
+├── static/
+├── legacy_estates/
+├── manage.py
+├── requirements.txt
+├── Procfile
+├── railway.toml
+└── nixpacks.toml
 ```
 
 ---
 
-## 4. How To Run This Locally
+# 🚀 Installation
 
-### Step 1 — Install requirements
+Clone the repository
+
 ```bash
-pip install django psycopg2-binary pillow
+git clone https://github.com/danishhussain-1/legacy-estates.git
 ```
 
-### Step 2 — Set up PostgreSQL
-Create a database and user in PostgreSQL:
-```sql
-CREATE DATABASE legacy_estates_db;
-CREATE USER legacy_user WITH PASSWORD 'your_password_here';
-GRANT ALL PRIVILEGES ON DATABASE legacy_estates_db TO legacy_user;
-```
+Go to project folder
 
-### Step 3 — Set environment variables
-Create a `.env` file or export these in your terminal:
 ```bash
-export DB_NAME=legacy_estates_db
-export DB_USER=legacy_user
-export DB_PASSWORD=your_password_here
-export DB_HOST=localhost
-export DB_PORT=5432
-export DJANGO_SECRET_KEY=replace-with-a-long-random-string
-export DJANGO_DEBUG=True
+cd legacy_estates
 ```
 
-> **Quick testing without PostgreSQL?** Set `USE_POSTGRES=False` and Django will
-> automatically use SQLite instead — no extra setup needed. Good for a quick demo,
-> but use real PostgreSQL for the live/production site.
+Install dependencies
 
-### Step 4 — Run migrations
+```bash
+pip install -r requirements.txt
+```
+
+Run migrations
+
 ```bash
 python manage.py migrate
 ```
 
-### Step 5 — Create your own admin account
+Create Superuser
+
 ```bash
 python manage.py createsuperuser
 ```
-(Or use the demo admin account below if you just want to explore first.)
 
-### Step 6 — Start the server
+Run Server
+
 ```bash
 python manage.py runserver
 ```
-Visit **http://127.0.0.1:8000/**
 
 ---
 
-## 5. Demo Login Credentials
+# 👥 User Roles
 
-These accounts already exist in the demo data so you can explore right away:
+### Admin
 
-| Role | URL | Username | Password |
-|---|---|---|---|
-| **Admin** | `/admin/` | `admin` | `admin12345` |
-| **Agent 1** | `/account/login/` | `sarah.khan` | `agent12345` |
-| **Agent 2** | `/account/login/` | `james.lee` | `agent12345` |
+- Manage users
+- Manage agents
+- Manage properties
+- Manage inquiries
 
-> ⚠️ **Important:** Change these passwords before going live. These are demo
-> credentials only, meant for testing.
+### Agent
 
----
+- Login Dashboard
+- Add Property
+- Edit Property
+- Delete Property
+- Upload Property Images
 
-## 6. How The Site Works (Quick Tour)
+### Public User
 
-- **Buyers/Sellers (public visitors)**: No login. They browse `/listings/`, use the
-  filters (price, city, type, bedrooms), open a property, and submit the inquiry form.
-  Messages land in the Admin Panel → Inquiries.
-
-- **Agents**: Log in at `/account/login/` → land on their Dashboard → click
-  "+ Add New Listing" to create a property, or Edit/Delete their existing ones.
-  Agents only see and manage **their own** listings.
-
-- **Admin (you / site owner)**: Log in at `/admin/` with the superuser account.
-  From here you can:
-  - Add/edit/delete **any** property (not just one agent's)
-  - Add new agents (create a User, then create an Agent profile linked to it)
-  - View all inquiries and contact messages
-  - Manage property features/amenities (e.g. "Swimming Pool", "Garage")
-  - Mark properties as Featured (shows on homepage) or change status (Available/Pending/Sold/Rented)
+- Browse Listings
+- Search Properties
+- Contact Agents
+- Submit Property Inquiry
 
 ---
 
-## 7. Adding a New Agent (Admin steps)
+# 📸 Screenshots
 
-1. Go to `/admin/auth/user/add/` → create a username + password for the agent.
-2. Go to `/admin/accounts/agent/add/` → select that user, fill in phone, title, bio, etc.
-3. The agent can now log in at `/account/login/` and manage their own listings.
+## 🏠 Home
 
----
-
-## 8. Deploying to a Live Server (Production Notes)
-
-Before going live, a developer/hosting provider should:
-
-1. Set `DJANGO_DEBUG=False`
-2. Set a strong, random `DJANGO_SECRET_KEY`
-3. Set `DJANGO_ALLOWED_HOSTS` to your actual domain name
-4. Use a real PostgreSQL database (not SQLite)
-5. Serve static/media files properly (e.g. via Nginx, or a service like AWS S3)
-6. Run behind a production server like **Gunicorn** + **Nginx** (not `manage.py runserver`,
-   which is for development only)
-7. Set up HTTPS (SSL certificate)
-
-This part is normal "deployment" work — any Django developer or hosting service
-(e.g. DigitalOcean, Railway, Render, PythonAnywhere) can take this project folder
-and deploy it. The codebase itself is already production-structured (environment
-variables, no hardcoded secrets, etc.).
+```md
+![Home](screenshots/home.png)
+```
 
 ---
 
-## 9. Design Notes
+## 🏘 Listings
 
-- **Brand**: "Legacy Estates" — deep navy + ivory + brass/gold color palette, paired
-  with a serif display font (headlines) and clean sans-serif body text, for a premium,
-  trustworthy real-estate feel.
-- Fully responsive: hamburger menu on mobile, stacked filters, single-column property
-  grid on small screens.
+```md
+![Listings](screenshots/listings.png)
+```
 
 ---
 
-## 10. Need Changes?
+## 👨‍💼 Agents
 
-Common things you may want to adjust:
-- **Colors/branding** → `static/css/base.css` (top of file, `:root` color variables)
-- **Footer contact info** → `templates/base.html`
-- **Homepage text** → `templates/properties/home.html`
-- **Add more property features** → Admin Panel → Properties → Property Features
+```md
+![Agents](screenshots/agents.png)
+```
 
-If you (or the client) need any new feature added later — like online payments,
-WhatsApp integration, email notifications for new inquiries, or a map view — these
-can be added on top of this existing structure.
+---
+
+## 📞 Contact
+
+```md
+![Contact](screenshots/contact.png)
+```
+
+---
+
+# 🔮 Future Improvements
+
+- WhatsApp Integration
+- Google Maps
+- Email Notifications
+- Saved Properties
+- Property Comparison
+- Admin Analytics
+- SSL & Custom Domain
+
+---
+
+# 💡 Challenges Solved
+
+- Railway deployment issues
+- Gunicorn configuration
+- WhiteNoise static files
+- Mobile responsive fixes
+- SQLite & PostgreSQL compatibility
+- Django widget styling updates
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+# 👨‍💻 Author
+
+**Khizra Liaqat**
+
+BS Applied Computing Student
+
+Aspiring Full Stack Developer
+
+GitHub:
+
+https://github.com/danishhussain-1
