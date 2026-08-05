@@ -169,34 +169,25 @@ python manage.py runserver
 
 ## 🏠 Home
 
-```md
 ![Home](screenshots/home.png)
-```
 
 ---
 
 ## 🏘 Listings
 
-```md
 ![Listings](screenshots/listings.png)
-```
 
 ---
 
 ## 👨‍💼 Agents
 
-```md
 ![Agents](screenshots/agents.png)
-```
 
 ---
 
 ## 📞 Contact
 
-```md
 ![Contact](screenshots/contact.png)
-```
-
 ---
 
 # 🔮 Future Improvements
