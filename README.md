@@ -221,9 +221,12 @@ This project is licensed under the MIT License.
 
 # 👨‍💻 Author
 
-**Khizra Liaqat**
+Developed by **Danish Hussain**
 
-BS Applied Computing Student
+Passionate Full Stack Web Developer focused on building modern, responsive, and production-ready web applications.
+
+GitHub:
+https://github.com/danishhussain-1
 
 Aspiring Full Stack Developer
 
